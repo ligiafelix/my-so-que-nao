@@ -15,20 +15,16 @@ const config = {
 // 3- cria a conexao 
 const conexao = new sequelize(config); //new vem da orientacao objeto (programacao orientado ao objeto). ela cria 1 objeto e retorna para guardar na cost conexao
 
-//4- Realiza a consulta (assíncronas)
-let promise = conexao.query('select * from funcionarios limit 0,5');
-
-// forma 1 de lidar com promeses: callbacks
-promise.then(                    //quando a promessa for cumprida execute esta função
-    data => {
-        console.log(data);
-        conexao.close();
-   }
-). catch(
-    err => {
+//forma 2 de ligar com promises - Async/Await
+async function levantarFuncionarios() {
+    try {
+        let resultado = await conexao.query('select * from funcionarios limit 0,5');
+        console.log(resultado);
+    } catch (error) {
         console.log('Deu muito ruim!');
+        console.log(error.parent.errno);
     }
-)
+    conexao.close();
 
-console.log(promise);
-
+}
+levantarFuncionarios();

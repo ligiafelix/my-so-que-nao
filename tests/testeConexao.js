@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //1- importa o sequelize
 const sequelize = require('sequelize');
@@ -32,3 +33,30 @@ promise.then(                    //quando a promessa for cumprida execute esta f
 
 console.log(promise);
 
+=======
+// 1 - Importa sequelize
+const sequelize = require('sequelize');
+
+// 2 - Criar um objeto contendo os dados da conexão
+const config = require('./config');
+
+// 3 - Cria a conexão
+const conexao = new sequelize(config);
+
+// 4 - Realiza a consulta (assíncronas)!!!
+let promise = conexao.query("SELECT * FROM funcionarios LIMIT 0,5");
+
+// Forma 1 de lidar com promeses: callbacks
+promise.then(
+    data => {
+        console.log(data);
+        conexao.close();
+    }
+).catch(
+    err => {
+        console.log("Deu muito ruim!");
+    }
+)
+
+console.log(promise);
+>>>>>>> f76fa1fae873e6b210eab8885d39bcbeb153af5a

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "development": {
     "username": "root",
@@ -21,3 +22,17 @@
     "dialect": "mysql"
   }
 }
+=======
+require('dotenv').config();
+
+const config = {
+  username: process.env.DBUSER,
+  password: process.env.DBPASS,
+  host: process.env.DBHOST,
+  port: process.env.DBPORT,
+  dialect: process.env.DBDIALECT,
+  database: process.env.DBNAME
+}
+
+module.exports = config;
+>>>>>>> f76fa1fae873e6b210eab8885d39bcbeb153af5a

@@ -1,3 +1,8 @@
-const {Usuario} = require('../database/models/');
-console.log(Usuario.findAll());//substituiria o SELECT * FROM usuarios
-                            // select * from usuarios inner join publicacoes.usuarios_id=usuarios.id
+const {Usuario, sequelize} = require('../database/models');
+
+Usuario.findAll({include:'publicacoes'}).then(
+    arrayDeUsuarios => {
+        arrayDeUsuarios.forEach(u=> console.log(u.toJSON()));
+        sequelize.close();
+    }
+);

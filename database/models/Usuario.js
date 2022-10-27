@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes)=>{
     return sequelize.define(
         "Usuario", // Nome do model
         {
-            id: {
+            id: { //objeto literal descrevendo as colunas q esta model vai representar
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 allowNull: false,
@@ -27,8 +27,9 @@ module.exports = (sequelize, DataTypes)=>{
             }
         },
         {
-            tableName: "usuarios"
+            tableName: "usuarios",
+            timestamps: true,
+            paranoid: true
         }
     );
-
 }
